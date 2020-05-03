@@ -19,7 +19,7 @@ class CreateDriversTable extends Migration
             $table->string('lastName');
             $table->string('middleName')->nullable();
             $table->string('profilePicture');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('phoneNumber');
             $table->string('address');
