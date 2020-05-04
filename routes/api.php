@@ -18,14 +18,31 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//
 Route::resource('foods', 'FoodController', [
         'only' => ['index', 'show', 'store']
     ]);
 
-Route::resource('seller', 'SellerController', [
-    'only' => ['index', 'show']
+//Seller manage profile
+Route::resource('user', 'UserController', [
+    'only' => ['show', 'update', 'destroy']
 ]);
 
+//Seller manage profile
+Route::resource('seller', 'SellerController', [
+    'only' => ['show', 'update', 'destroy']
+]);
+
+//Costumer review foods
 Route::group(['prefix' => 'foods'], function () {
     Route::apiResource('/{foods}/reviews', 'ReviewController');
+});
+
+//Divers manage profile
+Route::resource('driver', 'DriverController', [
+    'only' => ['index', 'show', 'store']
+]);
+//Driver manage orders
+Route::group(['prefix' => 'drivers'], function () {
+    Route::apiResource('/{drivers}/carts', 'DriverViewOrders');
 });

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Driver;
-use App\Http\Resources\Driver\DriverResource;
+use App\Cart;
+use App\Http\Resources\Driver\DriverViewCartResource;
 use Illuminate\Http\Request;
 
-class DriverController extends Controller
+class DriverViewOrders extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class DriverController extends Controller
      */
     public function index()
     {
-
+//        return Cart::all();
+        return DriverViewCartResource::collection(Cart::all());
     }
 
     /**
@@ -42,22 +43,21 @@ class DriverController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Driver  $driver
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Driver $driver)
+    public function show($id)
     {
-//        return $driver;
-        return new DriverResource($driver);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Driver  $driver
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Driver $driver)
+    public function edit($id)
     {
         //
     }
@@ -66,10 +66,10 @@ class DriverController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Driver  $driver
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Driver $driver)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,10 +77,10 @@ class DriverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Driver  $driver
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Driver $driver)
+    public function destroy($id)
     {
         //
     }

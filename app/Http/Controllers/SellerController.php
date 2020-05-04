@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Seller\SellerResource;
 use App\Seller;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,7 @@ class SellerController extends Controller
      */
     public function show(Seller $seller)
     {
-        //
+        return new SellerResource($seller);
     }
 
     /**
