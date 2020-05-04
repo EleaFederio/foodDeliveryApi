@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Food;
-use App\Http\Resources\Food\FoodCollection;
-use App\Http\Resources\Food\FoodResource;
+use App\Review;
 use Illuminate\Http\Request;
 
-class FoodController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        return FoodCollection::collection(Food::paginate(10));
+        //
     }
 
     /**
@@ -37,27 +35,27 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Food  $food
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(Food $food)
+    public function show(Review $review)
     {
-        return new FoodResource($food);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Food  $food
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function edit(Food $food)
+    public function edit(Review $review)
     {
         //
     }
@@ -66,10 +64,10 @@ class FoodController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Food  $food
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Food $food)
+    public function update(Request $request, Review $review)
     {
         //
     }
@@ -77,10 +75,10 @@ class FoodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Food  $food
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Food $food)
+    public function destroy(Review $review)
     {
         //
     }
