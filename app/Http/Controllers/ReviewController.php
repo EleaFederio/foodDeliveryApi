@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Food;
+use App\Http\Resources\Review\ReviewResource;
 use App\Review;
 use Illuminate\Http\Request;
 
@@ -12,9 +14,10 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+//        return Food::find($id);
+        return ReviewResource::collection(Food::find($id)->reviews);
     }
 
     /**
@@ -46,7 +49,7 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
-        //
+
     }
 
     /**

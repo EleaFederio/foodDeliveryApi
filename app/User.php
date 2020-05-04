@@ -10,6 +10,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function reviews(){
+        return $this->belongsToMany(Review::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

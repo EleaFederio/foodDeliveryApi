@@ -24,6 +24,9 @@ class FoodResource extends JsonResource
             'href' => [
                 'show_seller' => route('seller.show', $this->id)
             ],
+            'herf' => [
+                'reviews' => route('reviews.index', $this->id)
+            ],
             'category' => Category::find($this->category_id)->name,
             'price' => $this->price,
             'available' => $this->stock,

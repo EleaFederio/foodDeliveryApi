@@ -19,9 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('foods', 'FoodController', [
-        'only' => ['index', 'show']
+        'only' => ['index', 'show', 'store']
     ]);
 
 Route::resource('seller', 'SellerController', [
     'only' => ['index', 'show']
 ]);
+
+Route::group(['prefix' => 'foods'], function () {
+    Route::apiResource('/{foods}/reviews', 'ReviewController');
+});
