@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::post('seller_register', "SellerController@store");
+Route::post('seller_login', "SellerController@login");
 
 //Seller manage profile
 

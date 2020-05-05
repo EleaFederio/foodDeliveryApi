@@ -17,9 +17,33 @@ class SellerController extends Controller
         //
     }
 
+    public function login(Request $request)
+    {
+        $request->validate([
+            'phoneNumber' => 'required|numeric|min:11',
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password'
+        ]);
+
+        $user = Seller::where('phoneNumber', $request->phoneNumber)->first();
+
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
+        }
+
+        $token = $user->createToken('xxxx')->plainTextToken;
+        return response()->json([
+            'success' => true,
+            'token' => $token,
+            'customer' => $user
+        ]);
+    }
+
     public function create()
     {
-        //
+
     }
 
     public function store(Request $request)
