@@ -21,13 +21,14 @@ class CreateUsersTable extends Migration
             $table->string('middleName')->nullable();
             $table->string('profilePicture')->nullable();
             $table->string('email')->unique();
+            $table->string('phoneNumber')->unique();
             $table->string('address');
             $table->decimal('long', 11, 8);
             $table->decimal('lat', 10, 8);
             $table->date('dateOfBirth');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+//            $table->rememberToken();
             $table->timestamps();
         });
     }

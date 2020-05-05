@@ -21,7 +21,7 @@ class CreateDriversTable extends Migration
             $table->string('profilePicture');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('phoneNumber');
+            $table->string('phoneNumber')->unique();
             $table->string('address');
             $table->decimal('long', 11, 8);
             $table->decimal('lat', 10, 8);

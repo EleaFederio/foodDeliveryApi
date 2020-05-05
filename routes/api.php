@@ -25,13 +25,19 @@ Route::resource('foods', 'FoodController', [
 
 //Seller manage profile
 Route::resource('user', 'UserController', [
-    'only' => ['show', 'update', 'destroy']
+    'only' => ['show', 'store', 'update', 'destroy']
 ]);
 
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::resource('seller', 'SellerController', [
+        'only' => ['show', 'store', 'update', 'destroy']
+    ]);
+});
+
+Route::post('seller_register', "SellerController@store");
+
 //Seller manage profile
-Route::resource('seller', 'SellerController', [
-    'only' => ['show', 'update', 'destroy']
-]);
+
 
 //Costumer review foods
 Route::group(['prefix' => 'foods'], function () {
@@ -40,7 +46,7 @@ Route::group(['prefix' => 'foods'], function () {
 
 //Divers manage profile
 Route::resource('driver', 'DriverController', [
-    'only' => ['index', 'show', 'store']
+    'only' => ['index', 'store', 'show', 'store']
 ]);
 //Driver manage orders
 Route::group(['prefix' => 'drivers'], function () {
