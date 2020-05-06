@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     public function reviews(){
         return $this->belongsToMany(Review::class);
@@ -20,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'firstName', 'lastName', 'middleName', 'profilePicture', 'address', 'long', 'lat', 'dateOfBirth'
+        'name', 'email', 'password', 'firstName', 'lastName', 'middleName', 'phoneNumber','profilePicture', 'address', 'long', 'lat', 'dateOfBirth'
     ];
 
     /**

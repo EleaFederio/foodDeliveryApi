@@ -39,7 +39,8 @@ Route::post('seller_login', "SellerController@login");
 
 //Seller manage profile
 
-
+Route::post('customer_register', "UserController@store");
+Route::post('customer_login', "UserController@login");
 //Costumer review foods
 Route::group(['prefix' => 'foods'], function () {
     Route::apiResource('/{foods}/reviews', 'ReviewController');
