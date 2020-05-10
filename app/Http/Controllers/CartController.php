@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -12,9 +15,9 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        return User::find($id)->carts;
     }
 
     /**
@@ -35,7 +38,22 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'food_id' => 'required|numeric',
+            'user_id' => 'required|numeric',
+            'quantity' => 'required|numeric'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['errors' => $validator->errors()], Response::HTTP_UNAUTHORIZED);
+        }
+
+        Cart::create($request->all());
+
+        return response()->json([
+            'success' => true,
+        ]);
+
     }
 
     /**

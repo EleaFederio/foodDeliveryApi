@@ -18,8 +18,8 @@ $factory->define(Food::class, function (Faker $faker) {
         'category_id' => function(){
             return Category::all()->random();
         },
-        'price' => $faker->randomDigit(5, 2),
-        'price' => $faker->randomDigit(0.0, 10000.00),
+        'price' => $faker->randomDigit(10, 70),
+//        'price' => $faker->randomDigit(0.0, 10000.00),
         'stock' => $faker->randomDigit(100, 100),
     ];
 });

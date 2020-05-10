@@ -14,7 +14,7 @@ class SellerController extends Controller
 
     public function index()
     {
-        //
+        return SellerResource::collection(Seller::all());
     }
 
     public function login(Request $request)

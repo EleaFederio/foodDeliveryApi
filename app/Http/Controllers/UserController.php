@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\User\UserResource;
 use App\User;
-use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +23,7 @@ class UserController extends Controller
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
+                'phoneNumber' => ['The provided credentials are incorrect.'],
             ]);
         }
 
@@ -35,6 +34,8 @@ class UserController extends Controller
             'customer' => new  UserResource($user),
         ]);
     }
+
+
 
     public function index()
     {
@@ -64,7 +65,8 @@ class UserController extends Controller
             'lastName' => 'required',
             'phoneNumber' => 'required|numeric|min:11',
             'password' => 'required',
-            'password_confirmation' => 'required|same:password'
+            'password_confirmation' => 'required|same:password',
+            'deviceId' => 'required',
         ]);
         if($validator->fails()){
             return response()->json(['errors' => $validator->errors()], Response::HTTP_UNAUTHORIZED);
@@ -72,7 +74,7 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $seller = User::create($input);
-        $token = $seller->createToken('aaaaa')->plainTextToken;
+        $token = $seller->createToken($input['deviceId'])->plainTextToken;
         return response()->json([
             'success' => true,
             'token' => $token,

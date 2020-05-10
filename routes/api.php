@@ -28,6 +28,11 @@ Route::resource('user', 'UserController', [
     'only' => ['show', 'store', 'update', 'destroy']
 ]);
 
+Route::resource('categories', 'CategoryController', [
+    'only' => ['index', 'show', 'store', 'update', 'destroy']
+]);
+
+Route::get('seller', 'SellerController@index');
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('seller', 'SellerController', [
         'only' => ['show', 'store', 'update', 'destroy']
@@ -41,10 +46,24 @@ Route::post('seller_login', "SellerController@login");
 
 Route::post('customer_register', "UserController@store");
 Route::post('customer_login', "UserController@login");
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::resource('user', 'UserController', [
+        'only' => ['show', 'update', 'destroy']
+    ]);
+});
+
 //Costumer review foods
 Route::group(['prefix' => 'foods'], function () {
     Route::apiResource('/{foods}/reviews', 'ReviewController');
 });
+
+Route::group(['prefix' => 'users'], function () {
+    Route::apiResource('/{users}/cart', 'CartController');
+});
+
+Route::resource('carts', 'CartController', [
+    'only' => ['store', 'show', 'update', 'destroy']
+]);
 
 //Divers manage profile
 Route::resource('driver', 'DriverController', [

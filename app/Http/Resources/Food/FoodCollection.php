@@ -18,6 +18,7 @@ class FoodCollection extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'name' => $this->name,
             'detail' => substr($this->detail, 0, 20).'...',
             'foodPicture' => $this->foodPicture,

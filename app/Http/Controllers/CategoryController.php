@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Resources\Category\CategoriesResource;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return CategoriesResource::collection(Category::all());
     }
 
     /**

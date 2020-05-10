@@ -16,9 +16,10 @@ $factory->define(Cart::class, function (Faker $faker) {
         'user_id' => function(){
             return User::all()->random();
         },
-        'status' => $faker->boolean,
-        'driver_id' => function(){
-            return Driver::all()->random();
-        }
+        'quantity' => $faker->numberBetween(1,5),
+//        'status' => $faker->boolean,
+//        'driver_id' => function(){
+//            return Driver::all()->random();
+//        }
     ];
 });

@@ -19,9 +19,10 @@ class CreateCartsTable extends Migration
             $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
             $table->bigInteger('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->boolean('status');
-            $table->bigInteger('driver_id')->unsigned()->index();
-            $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
+            $table->integer('quantity');
+//            $table->boolean('status');
+//            $table->bigInteger('driver_id')->unsigned()->index();
+//            $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
             $table->timestamps();
         });
     }
