@@ -83,7 +83,7 @@ class SellerController extends Controller
 
     public function update(Request $request, Seller $seller)
     {
-        //
+        return 'hahaha';
     }
 
     public function destroy(Seller $seller)

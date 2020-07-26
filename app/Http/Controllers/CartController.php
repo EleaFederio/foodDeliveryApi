@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Cart;
 use App\Http\Resources\User\UserViewCart;
 use App\User;
@@ -65,10 +66,6 @@ class CartController extends Controller
             }
         }
 
-
-//
-
-
     }
 
     /**
@@ -100,9 +97,9 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request,User $user)
     {
-        //
+        dd($user);
     }
 
     /**

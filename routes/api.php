@@ -61,15 +61,11 @@ Route::group(['prefix' => 'users'], function () {
     Route::apiResource('/{users}/cart', 'CartController');
 });
 
-Route::resource('carts', 'CartController', [
-    'only' => ['store', 'show', 'update', 'destroy']
-]);
-
 //Divers manage profile
-Route::resource('driver', 'DriverController', [
-    'only' => ['index', 'store', 'show', 'store']
-]);
+//Route::resource('driver', 'DriverController', [
+//    'only' => ['index', 'store', 'show', 'store']
+//]);
 //Driver manage orders
-Route::group(['prefix' => 'drivers'], function () {
-    Route::apiResource('/{drivers}/carts', 'DriverViewOrders');
-});
+//Route::group(['prefix' => 'drivers'], function () {
+//    Route::apiResource('/{drivers}/carts', 'DriverViewOrders');
+//});
