@@ -62,9 +62,10 @@ Route::group(['prefix' => 'users'], function () {
 });
 
 //Divers manage profile
-//Route::resource('driver', 'DriverController', [
-//    'only' => ['index', 'store', 'show', 'store']
-//]);
+Route::resource('driver', 'DriverController', [
+   'only' => ['index', 'store', 'show', 'store']
+]);
+
 //Driver manage orders
 //Route::group(['prefix' => 'drivers'], function () {
 //    Route::apiResource('/{drivers}/carts', 'DriverViewOrders');
