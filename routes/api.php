@@ -32,7 +32,9 @@ Route::resource('categories', 'CategoryController', [
     'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
-Route::get('seller', 'SellerController@index');
+// Route::get('seller', 'SellerController@index');
+
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('seller', 'SellerController', [
         'only' => ['show', 'store', 'update', 'destroy']
