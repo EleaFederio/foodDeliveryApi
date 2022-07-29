@@ -32,7 +32,9 @@ Route::resource('categories', 'CategoryController', [
     'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
-Route::get('seller', 'SellerController@index');
+// Route::get('seller', 'SellerController@index');
+
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('seller', 'SellerController', [
         'only' => ['show', 'store', 'update', 'destroy']
@@ -62,9 +64,10 @@ Route::group(['prefix' => 'users'], function () {
 });
 
 //Divers manage profile
-//Route::resource('driver', 'DriverController', [
-//    'only' => ['index', 'store', 'show', 'store']
-//]);
+Route::resource('driver', 'DriverController', [
+   'only' => ['index', 'store', 'show', 'store']
+]);
+
 //Driver manage orders
 //Route::group(['prefix' => 'drivers'], function () {
 //    Route::apiResource('/{drivers}/carts', 'DriverViewOrders');

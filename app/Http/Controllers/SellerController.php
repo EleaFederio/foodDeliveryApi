@@ -21,8 +21,7 @@ class SellerController extends Controller
     {
         $request->validate([
             'phoneNumber' => 'required|numeric|min:11',
-            'password' => 'required',
-            'password_confirmation' => 'required|same:password'
+            'password' => 'required'
         ]);
 
         $user = Seller::where('phoneNumber', $request->phoneNumber)->first();
