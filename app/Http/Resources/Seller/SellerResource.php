@@ -15,6 +15,7 @@ class SellerResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'seller_id' => $this->id,
             'businessName' => $this->businessName,
             'description' => $this->description,
             'firstName' => $this->firstName,

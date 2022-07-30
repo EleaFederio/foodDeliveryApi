@@ -32,6 +32,10 @@ Route::resource('categories', 'CategoryController', [
     'only' => ['index', 'show', 'store', 'update', 'destroy']
 ]);
 
+
+
+// ************************************* //
+// ************** SELLER *************** //
 Route::group(['prefix' => 'seller'], function (){
     Route::post('register', "SellerController@store");
     Route::post('login', "SellerController@login");
@@ -41,6 +45,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 //    ***** store function is use for seller registration ***** //
     Route::apiresource('seller', 'SellerController')->except(['store']);
 });
+
+
 
 //Seller manage profile
 
