@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class SellerController extends Controller
 {
@@ -80,9 +81,12 @@ class SellerController extends Controller
         //
     }
 
-    public function update(Request $request, Seller $seller)
+    public function update(Request $request, $id)
     {
-        return 'hahaha';
+        $seller = Seller::find($id);
+        return response()->json([
+            'seller' => $seller
+        ]);
     }
 
     public function destroy(Seller $seller)
